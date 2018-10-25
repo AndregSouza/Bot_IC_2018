@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css?family=VT323');
+
+* {
+  margin: 0;
+  font-family: VT323;
+}
+
+body {
+  background-color: black;
+}
+
+::-webkit-scrollbar {
+    width: 3px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 0px;
+}
+
+.bot_container {
+  width: 600px;
+  margin: 0 auto;
+  position: relative;
+  height: 700px;
+  overflow-y: scroll;
+}
+
+.input{
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid white;
+  background: transparent;
+  height: 30px;
+  color: white;
+  font-size: 1.5rem;
+  outline: none;
+}
+
+.bot-message:first-child {
+  margin-top: 10px;
+}
+
+.bot-message {
+  width: 300px;
+  padding: 10px;
+  float: left;
+  color: #53fff5;
+  font-size: 1.5rem;
+  border-left: 3px solid #53fff5;
+}
+
+.user-message {
+  width: 300px;
+  padding: 10px;
+  margin-right: 2px;
+  text-align: right;
+  float: right;
+  color: white;
+  font-size: 1.5rem;
+  border-right: 3px solid white;
+}

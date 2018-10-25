@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Bot</title>
+  <link rel="stylesheet" type="text/css" href="/static/style.css" />
+  <script type="text/javascript" src="source.js"></script>
+
+</head>
+
+<body>
+
+  <div id="conversation" class="bot_container">
+
+    <div class="bot-message">
+      <p> Hello, I’m a demo customer care virtual assistant to show you the basics. I can help with directions to my store, hours of operation and booking an in-store appointment </p>
+    </div>
+
+    {% for bot_response in bot_response %}
+    <div class="user-message">
+      <p>{{ user_response[loop.index0] }}</p>
+    </div>
+
+    <div class="bot-message">
+      <p> {{ bot_response }} </p>
+    </div>
+      {% endfor %}
+
+
+
+      <!-- {{ bot_response }} -->
+
+    </div>
+
+    <div class="input_container">
+      <form method="POST" for="textInput">
+        <input id="user-input" class="input" type="textInput" name="textField" placeholder="Fale comigo!">
+        <input type="submit" onclick="send()" />
+      </form>
+
+
+    </div>
+
+
+</body>
+
+</html>
