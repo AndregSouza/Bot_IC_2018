@@ -4,9 +4,6 @@ import time
 
 app = Flask(__name__)
 
-if __name__ == '__main__':
-      app.run(host='0.0.0.0', port=33507)
-
 user_response = []
 bot_response = []
 
@@ -41,4 +38,4 @@ def iniciaConversa():
 def my_form_post():
     iniciaConversa()
     return render_template('index.html', user_response=user_response, bot_response=bot_response)
-app.run()
+app.run(host='0.0.0.0')
