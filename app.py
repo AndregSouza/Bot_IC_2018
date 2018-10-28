@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, Markup
 import watson_developer_cloud
 import time
+import os
 
 app = Flask(__name__)
 
