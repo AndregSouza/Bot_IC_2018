@@ -1,7 +1,6 @@
+
 from flask import Flask, render_template, request, Markup
-import watson_developer_cloud
-import time
-import os
+import watson_developer_cloud, time, os
 
 app = Flask(__name__)
 
@@ -13,7 +12,7 @@ def webprint():
     return render_template('index.html')
 
 # Set up Assistant service.
-service = watson_developer_cloud.AssistantV1( username = '41fc5432-d6e8-4bd2-8ea0-4367c642bcd0', password = 'xMvynkPPQFwX', version = '2018-02-16' )
+service = watson_developer_cloud.AssistantV1(username = '41fc5432-d6e8-4bd2-8ea0-4367c642bcd0', password = 'xMvynkPPQFwX', version = '2018-02-16')
 workspace_id = '31dd6267-459f-4df8-a135-575731dc5f0a'
 
 def iniciaConversa():
@@ -21,14 +20,10 @@ def iniciaConversa():
     user_input = entradaUsuario
     context = {}
     current_action = ''
-    response = service.message(workspace_id = workspace_id, input = {'text': user_input}, context = context)
-    context = response.result['context']
 
     if user_input != '':
         response = service.message(workspace_id = workspace_id, input = {'text': user_input}, context = context)
-        print(entradaUsuario)
-        print(response.result['output']['text'][0])
-
+        context = response.result['context']
 
     global user_response
     global bot_response
