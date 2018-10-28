@@ -5,12 +5,6 @@ import os
 
 app = Flask(__name__)
 
-if __name__ == '__main__':
-    app.debug = True
-    port = int(os.environ.get('PORT',5000))
-    app.run(host='0.0.0.0', port=port)
-
-
 user_response = []
 bot_response = []
 
@@ -45,4 +39,8 @@ def iniciaConversa():
 def my_form_post():
     iniciaConversa()
     return render_template('index.html', user_response=user_response, bot_response=bot_response)
-app.run()
+
+if __name__ == '__main__':
+    app.debug = True
+    port = int(os.environ.get('PORT',5000))
+    app.run()
