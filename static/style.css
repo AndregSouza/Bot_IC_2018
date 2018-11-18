@@ -3,10 +3,18 @@
 * {
   margin: 0;
   font-family: VT323;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+html {
+  height: 100%;
 }
 
 body {
-  background-color: black;
+  background-color: #D9D08D;
+  height: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -19,45 +27,73 @@ body {
     border-radius: 0px;
 }
 
-.bot_container {
-  width: 600px;
+.conversation-container{
+  width: 1024px;
+  height: 100%;
   margin: 0 auto;
   position: relative;
-  height: 700px;
+  background-color: black;
+  overflow:auto;
+}
+
+.overlay-image {
+  position: absolute;
+  width: 1024px;
+  height: 100%;
+  pointer-events: none;
+}
+
+.bot_container {
+  margin-top: 60px;
+  width: 850px;
+  height: 75%;
+  margin: 60px auto 0 auto;
   overflow-y: scroll;
+}
+
+.input_container {
+  width: 850px;
+  margin:0 auto;
+}
+
+#form > p {
+  color: white;
+  font-size: 1.5rem;
+  padding: 10px;
+}
+
+#form {
+  display: flex;
 }
 
 .input{
   width: 100%;
   border: none;
-  border-bottom: 2px solid white;
+  padding: 10px;
   background: transparent;
-  height: 30px;
+  height: 100%;
+  outline: none;
+  border-radius: 7px;
   color: white;
   font-size: 1.5rem;
-  outline: none;
+}
+
+.submit-button {
+  display: none;
 }
 
 .bot-message:first-child {
   margin-top: 10px;
 }
 
-.bot-message {
-  width: 300px;
-  padding: 10px;
+.message {
+  width: 600px;
+  padding: 5px 0px 5px 0px;
   float: left;
-  color: #53fff5;
+  color: #04D304;
   font-size: 1.5rem;
-  border-left: 3px solid #53fff5;
 }
 
 .user-message {
-  width: 300px;
-  padding: 10px;
-  margin-right: 2px;
-  text-align: right;
-  float: right;
-  color: white;
-  font-size: 1.5rem;
-  border-right: 3px solid white;
+  margin-top: 15px;
 }

@@ -3,45 +3,54 @@
 
 <head>
   <meta charset="utf-8">
+  <meta HTTP-EQUIV="Pragma" content="no-cache">
+  <meta HTTP-EQUIV="Expires" content="-1">
   <title>Bot</title>
-  <link rel="stylesheet" type="text/css" href="/static/style.css" />
-  <script type="text/javascript" src="source.js"></script>
+  <link rel="stylesheet" type="text/css" href="static/style.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 
 <body>
 
-  <div id="conversation" class="bot_container">
+  <div class="conversation-container">
 
-    <div class="bot-message">
-      <p> Hello, I’m a demo customer care virtual assistant to show you the basics. I can help with directions to my store, hours of operation and booking an in-store appointment </p>
-    </div>
+    <img width="1024px" class="overlay-image" src="static/computador.png">
 
-    {% for bot_response in bot_response %}
-    <div class="user-message">
-      <p>{{ user_response[loop.index0] }}</p>
-    </div>
+    <div id="conversation" class="bot_container">
 
-    <div class="bot-message">
-      <p> {{ bot_response }} </p>
-    </div>
+      <div class="message">
+        <p> Ora ora, se não é um humano que veio à minha procura. </p>
+      </div>
+
+      {% for responses in conversation %}
+      <div class="message">
+        <p> {{ responses }} </p>
+      </div>
       {% endfor %}
-
-
-
-      <!-- {{ bot_response }} -->
 
     </div>
 
     <div class="input_container">
-      <form method="POST" for="textInput">
-        <input id="user-input" class="input" type="textInput" name="textField" placeholder="Fale comigo!">
-        <input type="submit" onclick="send()" />
+      <form id="form" method="POST" for="textInput">
+        <p> > </p>
+        <input id="user-input" class="input" type="textInput" name="textField" placeholder="Digite aqui para falar com Edgardo">
+        <input class="submit-button" type="submit"/>
       </form>
 
 
     </div>
 
+  </div>
+
+  <script>
+
+    document.getElementById("conversation").scrollTop = 9999999;
+    $( window ).on( "load", function() {
+      $('.message:contains(">")').addClass('user-message ');
+    })
+
+  </script>
 
 </body>
 
