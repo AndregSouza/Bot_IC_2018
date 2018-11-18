@@ -46,7 +46,6 @@ def iniciaConversa():
 def my_form_post():
     iniciaConversa()
     return render_template('index.html', conversation=responses)
-app.run()
 
 if __name__ == '__main__':
     app.debug = True
