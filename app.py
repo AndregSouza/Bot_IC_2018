@@ -31,8 +31,8 @@ def iniciaConversa():
     response = service.message(workspace_id = workspace_id, input = {'text': user_input}, context = context)
     context = response.result['context']
 
-    global user_response
-    global bot_response
+    #global user_response
+    #global bot_response
     responses.append('> ' + request.form['textField'])
 
     i = 0
