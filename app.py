@@ -1,7 +1,6 @@
 # This Python file uses the following encoding: utf-8
 from flask import Flask, render_template, request, Markup
-import watson_developer_cloud
-import time
+import watson_developer_cloud, time, os
 
 # Aqui estamos criando um objeto da classe Flask e, em seguida, atribuindo-o à variável 'app'.
 app = Flask(__name__)
