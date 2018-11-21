@@ -3,11 +3,10 @@
 
 <head>
   <meta charset="utf-8">
-  <meta HTTP-EQUIV="Pragma" content="no-cache">
-  <meta HTTP-EQUIV="Expires" content="-1">
   <title>Bot</title>
   <link rel="stylesheet" type="text/css" href="static/style.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 
 </head>
 
@@ -23,11 +22,6 @@
         <p> Ora ora, se não é um humano que veio à minha procura. </p>
       </div>
 
-      {% for responses in conversation %}
-      <div class="message">
-        <p> {{ responses }} </p>
-      </div>
-      {% endfor %}
 
     </div>
 
@@ -38,17 +32,52 @@
         <input class="submit-button" type="submit"/>
       </form>
 
-
     </div>
 
   </div>
 
   <script>
 
+
+
+
     document.getElementById("conversation").scrollTop = 9999999;
+
+
     $( window ).on( "load", function() {
       $('.message:contains(">")').addClass('user-message ');
     })
+
+
+    if (!!$.cookie('conversa')) {
+       var json_str = $.cookie('conversa');
+    } else {
+      var conversa = []
+      var json_str = JSON.stringify(conversa);
+      $.cookie('conversa', json_str);
+    }
+
+
+    var conversa = JSON.parse(json_str);
+
+
+    {% for ultimaConversa in conversa %}
+
+      conversa.push("{{ ultimaConversa }}")
+
+    {% endfor %}
+
+
+    $.each(conversa, function(index, value) {
+        $("#conversation").append("<div class='message'><p>" + value + "</p></div>")
+    });
+
+
+    var json_str = JSON.stringify(conversa);
+    $.cookie('conversa', json_str);
+
+
+
 
   </script>
 

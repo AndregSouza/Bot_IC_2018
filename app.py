@@ -6,10 +6,10 @@ import watson_developer_cloud, time, os
 app = Flask(__name__)
 
 # Criação de um Array para armazenar as mensagens do usuário e do Bot.
-responses = []
+conversa = []
 
-# Criação de um prefixo para diferenciar as mensagens do usuario das do Bot.
-prefix = ['>']
+
+tamanhoAtual = 0
 
 # Usamos o route para registrar a função webprint e carregar a página index.html para uma determinada regra de URL.
 @app.route('/')
@@ -33,18 +33,31 @@ def iniciaConversa():
 
     #global user_response
     #global bot_response
-    responses.append('> ' + request.form['textField'])
+    conversa.append('> ' + request.form['textField'])
+    print(request.form['textField'])
 
     i = 0
     while i < len(response.result['output']['text']) :
-        responses.append(response.result['output']['text'][i])
+        conversa.append(response.result['output']['text'][i])
         i += 1
+
+    global tamanhoAtual
+    tamanhoAtual = len(conversa)
+
 
 # Usamos o route para registrar a função my_form_post e carregar a página index.html com as respostas do diálogo.
 @app.route('/', methods=['POST'])
 def my_form_post():
+    temp = tamanhoAtual
     iniciaConversa()
-    return render_template('index.html', conversation=responses)
+    difTamanho = tamanhoAtual - temp
+    ultimaConversa = []
+    i = difTamanho
+    while i > 0 :
+        ultimaConversa.append(conversa[tamanhoAtual - i])
+        i -= 1
+
+    return render_template('index.html', conversa = ultimaConversa)
 
 if __name__ == '__main__':
     app.debug = True
