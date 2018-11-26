@@ -21,7 +21,7 @@ service = watson_developer_cloud.AssistantV1(
 version = '2018-07-10',
 url = 'https://gateway.watsonplatform.net/assistant/api',
 iam_apikey = 'BLiVAW-VPiFWoFBPItsKqbrON90JIjKnNrQc1ELL3mEK')
-workspace_id = '8904738c-386d-4b3e-8e64-e3620a3467f0'
+workspace_id = 'e3e2b796-7c3d-44d1-9016-b5fe3d7e83cb'
 
 # Criação da Função de Conversa do Robô
 def iniciaConversa():
