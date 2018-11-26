@@ -34,7 +34,6 @@ def iniciaConversa():
     #global user_response
     #global bot_response
     conversa.append('> ' + request.form['textField'])
-    print(request.form['textField'])
 
     i = 0
     while i < len(response.result['output']['text']) :
